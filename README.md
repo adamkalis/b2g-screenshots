@@ -159,7 +159,64 @@ make add-locales LOCALES='zh-CN'
 </pre>
 This will remove "zh-CN" directory inside "locales" directory and its db.json file
 
+## Other Commands
+
 #### *make find-dupl-locales [LOCALES=' [locale] [other_locale] ']*
 
+The command "make find-dupl-locales" checks two different things on provided locales:
+* Checks if there are duplicate id entries inside the same . properties file
+* Checks if there are duplicate id entries in different .properties files and then checks if the localized string of those are the same
+
+Notes: 
+* The checks on ids are case sensitive
+* The provided locales should already be initialized
+* If no locales are provided then it will check all the available locales that are in the locales directory
 
 ##### Examples:
+
+<pre>
+make find-dupl-locales LOCALES='sv-SE sk'
+</pre>
+This will check "sv-SE"and "sk" locales for duplicate ids.
+
+* * *
+<pre>
+make find-dupl-locales LOCALES='en-US'
+</pre>
+This will check "en-US" locale for duplicate ids.
+
+sample output:
+<pre>
+          ----====*en-US*====----
+
+--- skip
+Duplicate at:  apps/communications/ftu/ftu.properties
+
+--- continue
+Duplicate at:  apps/system/system.properties
+
+--- gitInfo
+Duplicate at:  apps/settings/settings.properties
+
+--- deny
+Duplicate at:  apps/system/system.properties
+
+2 entries with same id: 155
+2 entries with same id and l10n: 18
+3 entries with same id: 23
+3 entries with same id and l10n: 10
+4 entries with same id: 7
+4 entries with same id and l10n: 3
+>4 entries with same id: 9
+>4 entries with same id and l10n: 3
+total ids: 2395
+</pre>
+
+There are 4 duplicate id entries (skip, continue, gitInfo, deny) each in a .properties file.
+Also:
+There are 155 same id entries in 2 .properties files and 18 of them have the same localized string.
+There are 23 same id entries in 3 .properties files and 10 of them have the same localized string.
+There are 7 same id entries in 4 .properties files and 3 of them have the same localized string.
+There are 9 same id entries in more than 4 .properties files and 3 of them have the same localized string.
+There are totally 2395 id entries (duplicates not counted)
+
