@@ -25,7 +25,7 @@ The command "make init" initializes the project in three steps using "make clone
 <pre>
 make init LOCALES='en-US cs ro'
 </pre>
-This will create a v1-train-branch "gaia" directory, "en-US", "cs" and "ro" directories inside "locales" directory and their db.json files
+This will create a v1-train-branch "gaia" directory, "en-US", "cs" and "ro" directories inside "locales" directory and their db.json files:
 
 <pre>
 +gaia
@@ -45,27 +45,25 @@ This will create a v1-train-branch "gaia" directory, "en-US", "cs" and "ro" dire
 <pre>
 make init LOCALES='en-GB'
 </pre>
-This will create a v1-train-branch "gaia" directory, "en-GB" directory inside "locales" directory and its db.json file
+This will create a v1-train-branch "gaia" directory, "en-GB" directory inside "locales" directory and its db.json file:
 
 <pre>
 +gaia
 -locales
-  +en-US
-  -cs
+  +en-GB
     db.json
     +apps
     +shared
     +showcase_apps
     +test_apps
     +test_external_apps
-  +ro
 </pre>
 
 * * *
 <pre>
 make init
 </pre>
-This will create a v1-train-branch "gaia" directory, all available locales inside "locales" directory and their db.json files
+This will create a v1-train-branch "gaia" directory, all available locales inside "locales" directory and their db.json files:
 
 <pre>
 +gaia
@@ -220,3 +218,26 @@ There are 7 same id entries in 4 .properties files and 3 of them have the same l
 There are 9 same id entries in more than 4 .properties files and 3 of them have the same localized string.
 There are totally 2395 id entries (duplicates not counted)
 
+#### *make clone-gaia*
+
+Clones [gaia repository](https://github.com/mozilla-b2g/gaia) and checkout the [v1-train branch](https://github.com/mozilla-b2g/gaia/tree/v1-train)
+
+#### *make hg-init [LOCALES=' [locale] [other_locale] ']*
+
+1. Initialize (downloading) the given locales in argument "LOCALES". If no locales are provided, it will download all the available from [gaia-l10n mercurial repository](http://hg.mozilla.org/gaia-l10n)
+2. Creates for every downloaded locale a database json file "db.json", in which stores by id
+  * the localized string
+  * the .properties file that stores this string
+  * the screenshot list that stores screenshots where the string shows up (initialy will be empty)
+
+#### *make update-gaia*
+
+Pull the latest changes of [v1-train branch](https://github.com/mozilla-b2g/gaia/tree/v1-train) from [gaia repository](https://github.com/mozilla-b2g/gaia)
+
+#### *make update-hg [LOCALES=' [locale] [other_locale] ']*
+
+1. Updates the given locales in argument "LOCALES". If no locales are provided, it will update all the locales inside locales directory
+2. Creates for every updated locale a database json file "db.json", in which stores by id
+  * the localized string
+  * the .properties file that stores this string
+  * the screenshot list that stores screenshots where the string shows up (initialy will be empty)
