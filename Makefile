@@ -1,5 +1,5 @@
 .PHONY: init
-init: clone-gaia hg-init
+init: clone-gaia init-hg init-env
 
 .PHONY: update
 update: update-gaia update-hg
@@ -22,9 +22,14 @@ clone-gaia:
 	git clone https://github.com/mozilla-b2g/gaia $<
 	git --git-dir=gaia/.git --work-tree=gaia/ checkout v1-train
 
-.PHONY: hg-init
-hg-init:
+.PHONY: init-hg
+init-hg:
 	./locales.sh init $(LOCALES)
+
+.PHONY: init-env
+init-env:
+	virtualenv env
+	env/bin/pip install marionette_client
 
 .PHONY: update-gaia
 update-gaia:
