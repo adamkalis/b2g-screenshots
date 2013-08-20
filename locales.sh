@@ -7,13 +7,17 @@ case "$1" in
     then
       for locale in $@
       do
-       (hg clone http://hg.mozilla.org/gaia-l10n/$locale locales/$locale/; python ids_json.py $locale;) &
+       (hg clone http://hg.mozilla.org/gaia-l10n/$locale locales/$locale/; 
+        python ids_json.py $locale;
+        mkdir -p screenshots/$locale) &
       done
       wait
     else
       for locale in $(python get_locales.py)
       do
-       (hg clone http://hg.mozilla.org/gaia-l10n/$locale locales/$locale/; python ids_json.py $locale;) &
+       (hg clone http://hg.mozilla.org/gaia-l10n/$locale locales/$locale/;
+        python ids_json.py $locale;
+        mkdir -p screenshots/$locale) &
       done
       wait
     fi
@@ -34,7 +38,9 @@ case "$1" in
     #Adding locales
     for locale in $locales
     do
-     (hg clone http://hg.mozilla.org/gaia-l10n/$locale locales/$locale/; python ids_json.py $locale;) &
+     (hg clone http://hg.mozilla.org/gaia-l10n/$locale locales/$locale/;
+      python ids_json.py $locale;
+      mkdir -p screenshots/$locale) &
     done
     wait
     ;;
@@ -51,10 +57,11 @@ case "$1" in
         echo "Locale $locale does not exist"
       fi
     done
-    #Adding locales
+    #Removing locales
     for locale in $locales
     do
-     (rm -rf locales/$locale/) &
+     (rm -rf locales/$locale/;
+      rm -rf screenshots/$locale/) &
     done
     wait
     ;;
