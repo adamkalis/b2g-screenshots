@@ -30,6 +30,7 @@ init-hg:
 init-env:
 	virtualenv env
 	env/bin/pip install marionette_client
+	env/bin/pip install PIL
 
 .PHONY: update-gaia
 update-gaia:
@@ -39,3 +40,7 @@ update-gaia:
 .PHONY: update-hg
 update-hg:
 	./locales.sh update $(LOCALES)
+
+.PHONY: runtests
+runscripts:
+	./runscripts.sh

@@ -30,13 +30,13 @@ case "$1" in
     do
       if [ ! -d locales/$locale ]
       then
-        locales=$locale' '$locales
+        AVAIL_LOCALES=$locale' '$AVAIL_LOCALES
       else
         echo "Locale $locale already exists"
       fi
     done
     #Adding locales
-    for locale in $locales
+    for locale in $AVAIL_LOCALES
     do
      (hg clone http://hg.mozilla.org/gaia-l10n/$locale locales/$locale/;
       python ids_json.py $locale;
@@ -52,13 +52,13 @@ case "$1" in
     do
       if [ -d locales/$locale ]
       then
-        locales=$locale' '$locales
+        AVAIL_LOCALES=$locale' '$AVAIL_LOCALES
       else
         echo "Locale $locale does not exist"
       fi
     done
     #Removing locales
-    for locale in $locales
+    for locale in $AVAIL_LOCALES
     do
      (rm -rf locales/$locale/;
       rm -rf screenshots/$locale/) &
@@ -74,12 +74,12 @@ case "$1" in
       do
         if [ -d locales/$locale ]
         then
-          locales=$locale' '$locales
+          AVAIL_LOCALES=$locale' '$AVAIL_LOCALES
         else
           echo "Locale $locale does not exist"
         fi
       done
-      for locale in $locales
+      for locale in $AVAIL_LOCALES
       do
        (hg pull -u -R locales/$locale; python ids_json.py $locale;) &
       done
@@ -101,12 +101,12 @@ case "$1" in
       do
         if [ -d locales/$locale ]
         then
-          locales=$locale' '$locales
+          AVAIL_LOCALES=$locale' '$AVAIL_LOCALES
         else
           echo "Locale $locale does not exist"
         fi
       done
-      for locale in $locales
+      for locale in $AVAIL_LOCALES
       do
         python find_duplicates.py $locale
       done
