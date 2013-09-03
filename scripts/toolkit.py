@@ -2,8 +2,8 @@ import sys
 import os
 import json
 import base64
-import Image
-import ImageChops
+from PIL import Image
+from PIL import ImageChops
 
 def get_db(locale):
   json_file = open('locales/' + locale + '/db.json')

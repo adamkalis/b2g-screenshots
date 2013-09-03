@@ -30,7 +30,7 @@ init-hg:
 init-env:
 	virtualenv env
 	env/bin/pip install marionette_client
-	env/bin/pip install PIL
+	env/bin/pip install Pillow
 
 .PHONY: update-gaia
 update-gaia:
