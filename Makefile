@@ -41,6 +41,6 @@ update-gaia:
 update-hg:
 	./locales.sh update $(LOCALES)
 
-.PHONY: runtests
+.PHONY: runscripts
 runscripts:
 	./runscripts.sh
