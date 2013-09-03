@@ -2,3 +2,5 @@ env/
 gaia/
 locales/
 screenshots/
+
+*.pyc
