@@ -86,12 +86,12 @@ def create_screenshot_dir(locale, path):
 def take_screenshot(locale, path, client, file_name):
   screenshot_name = 'screenshots/' + locale + '/' + path + '/' + file_name
   if os.path.exists(screenshot_name):
-    os.rename(screenshot_name, screenshot_name + '.old')
+    os.rename(screenshot_name, screenshot_name + '.old.jpeg')
   file = open(screenshot_name, 'w')
   screenshot = client.screenshot()[22:]
   file.write(base64.decodestring(screenshot))
   file.close()
-  if os.path.exists(screenshot_name + '.old'):
+  if os.path.exists(screenshot_name + '.old.jpeg'):
     if screenshot_changed(screenshot_name):
       print "-----Screenshot " + screenshot_name + ' changed-----'
 
@@ -104,10 +104,10 @@ def check_flags(test_flags, device_flags):
 
 def screenshot_changed(screenshot_name):
   new = Image.open(screenshot_name)
-  old = Image.open(screenshot_name + '.old')
+  old = Image.open(screenshot_name + '.old.jpeg')
   diff = ImageChops.difference(new, old)
   if diff.getbbox:
-    diff.save(screenshot_name + '.diff', 'JPEG')
+    diff.save(screenshot_name + '.diff.jpeg', 'JPEG')
     return True
   else:
     return False
