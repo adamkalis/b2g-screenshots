@@ -49,7 +49,7 @@ def check_duplicate (db, data_id, data_l10n, app, app_categ, screenshot_entry):
     print '\n***not added to db: ' + data_id + ' ***'
 
 def add_screenshot_to_id(db, data_id, data_l10n, app, app_categ, screenshot_entry):
-  print data_id, data_l10n, screenshot_entry
+  print data_id, data_l10n.encode('utf-8'), screenshot_entry
   found = False
   if len(db[data_id]) == 1:
     for screenshot in db[data_id][0]['screenshots']:
