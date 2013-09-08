@@ -1,19 +1,41 @@
 #!/bin/bash
 
 case "$1" in
-  init)
+  init | add)
     shift
     if [ $# != 0 ]
     then
+      #Check if locale already exists
       for locale in $@
       do
-       (hg clone http://hg.mozilla.org/gaia-l10n/$locale locales/$locale/; 
+        if [ ! -d locales/$locale ]
+        then
+          AVAIL_LOCALES=$locale' '$AVAIL_LOCALES
+        else
+          echo "Locale $locale already exists"
+        fi
+      done
+      #Initialize locales
+      for locale in $AVAIL_LOCALES
+      do
+       (hg clone http://hg.mozilla.org/gaia-l10n/$locale locales/$locale/;
         python ids_json.py $locale;
         mkdir -p screenshots/$locale) &
       done
       wait
     else
+      #Check if locale already exists
       for locale in $(python get_locales.py)
+      do
+        if [ ! -d locales/$locale ]
+        then
+          AVAIL_LOCALES=$locale' '$AVAIL_LOCALES
+        else
+          echo "Locale $locale already exists"
+        fi
+      done
+      #Initialize locales
+      for locale in $AVAIL_LOCALES
       do
        (hg clone http://hg.mozilla.org/gaia-l10n/$locale locales/$locale/;
         python ids_json.py $locale;
@@ -21,28 +43,6 @@ case "$1" in
       done
       wait
     fi
-    ;;
-
-  add)
-    shift
-    #Check if locale already exists
-    for locale in $@
-    do
-      if [ ! -d locales/$locale ]
-      then
-        AVAIL_LOCALES=$locale' '$AVAIL_LOCALES
-      else
-        echo "Locale $locale already exists"
-      fi
-    done
-    #Adding locales
-    for locale in $AVAIL_LOCALES
-    do
-     (hg clone http://hg.mozilla.org/gaia-l10n/$locale locales/$locale/;
-      python ids_json.py $locale;
-      mkdir -p screenshots/$locale) &
-    done
-    wait
     ;;
 
   remove)
