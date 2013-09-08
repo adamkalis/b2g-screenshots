@@ -3,7 +3,7 @@
 ## Requirements
 
 * Linux Distribution with bash shell
-* Python 2.7 and [virtuaenv package](https://pypi.python.org/pypi/virtualenv/)
+* Python 2.7, dev python package and [virtuaenv package](https://pypi.python.org/pypi/virtualenv/)
 * [Marionette - Python Client](https://developer.mozilla.org/en-US/docs/Marionette/Client)
 * B2G device with [engineering build](https://developer.mozilla.org/en-US/docs/Marionette/Builds)
 * adb access to this device

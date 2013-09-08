@@ -32,7 +32,7 @@ init-hg:
 init-env:
 	@(if [ ! -d 'env' ]; then\
 	    virtualenv env;\
-	    env/bin/pip install marionette_client\
+	    env/bin/pip install marionette_client;\
 	    env/bin/pip install Pillow;\
 	  fi)
 
