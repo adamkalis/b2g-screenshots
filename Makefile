@@ -19,8 +19,10 @@ find-dupl-locales:
 
 .PHONY: clone-gaia
 clone-gaia:
-	git clone https://github.com/mozilla-b2g/gaia $<
-	git --git-dir=gaia/.git --work-tree=gaia/ checkout v1-train
+	@(if [ ! -d 'gaia' ]; then\
+	    git clone https://github.com/mozilla-b2g/gaia;\
+	    git --git-dir=gaia/.git --work-tree=gaia/ checkout v1-train;\
+	  fi)
 
 .PHONY: init-hg
 init-hg:
@@ -28,9 +30,11 @@ init-hg:
 
 .PHONY: init-env
 init-env:
-	virtualenv env
-	env/bin/pip install marionette_client
-	env/bin/pip install Pillow
+	@(if [ ! -d 'env' ]; then\
+	    virtualenv env;\
+	    env/bin/pip install marionette_client\
+	    env/bin/pip install Pillow;\
+	  fi)
 
 .PHONY: update-gaia
 update-gaia:
