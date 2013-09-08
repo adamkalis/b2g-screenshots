@@ -72,7 +72,7 @@ def log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry, sec
       if db.has_key(data_id):
         add_screenshot_to_id(db, data_id, data_l10n, app, app_categ, screenshot_entry)
       else:
-        if i.get_attribute('placeholder'):
+        if i.get_attribute('placeholder') and db.has_key(data_id + '.placeholder'):
           add_screenshot_to_id(db, data_id + '.placeholder', data_l10n, app, app_categ, screenshot_entry)
         else:
           #TO DO raise proper error
