@@ -3,7 +3,7 @@ import sys
 import getopt
 
 locale = ''
-apps_list = []
+apps_list = ['ftu']
 properties_files = []
 data_ids = []
 device_flags = {
