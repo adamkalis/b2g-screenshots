@@ -5,7 +5,7 @@ import base64
 import time
 from scripts.toolkit import create_screenshot_dir, take_screenshot
 from scripts.toolkit import get_db, set_db, log_displayed_l10n_strings
-from scripts.toolkit import check_flags
+from scripts.toolkit import check_flags, change_screen_timeout
 from scripts.config import *
 
 
@@ -22,6 +22,8 @@ def ftu(locale, device_flags):
 
   client = Marionette('localhost', 2828)
   client.start_session()
+
+  change_screen_timeout(client) 
 
   ftu_iframe = client.find_element('css selector',"iframe[src='app://communications.gaiamobile.org/ftu/index.html']")
 
