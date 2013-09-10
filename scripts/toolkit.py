@@ -113,8 +113,8 @@ def screenshot_changed(screenshot_name):
     return False
 
 def change_screen_timeout(client):
-    client.execute_script("
+    client.execute_script("""
       let setlock = window.wrappedJSObject.SettingsListener.getSettingsLock();
       let obj = {'screen.timeout': 0};
       setlock.set(obj);
-    ")  
+    """)  
