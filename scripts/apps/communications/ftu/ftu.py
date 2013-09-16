@@ -40,7 +40,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -61,7 +62,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {
       "sim": True,
       "no-sim": False}
@@ -85,7 +87,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {
       "sim": True,
       "no-sim": False}
@@ -112,7 +115,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {
       "sim": True,
       "no-sim": False}
@@ -139,7 +143,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {
       "sim": True,
       "no-sim": False}
@@ -170,7 +175,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {
       "sim": True,
       "no-sim": False}
@@ -194,7 +200,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {
       "sim": True,
       "no-sim": False}
@@ -221,7 +228,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {
       "sim": True,
       "no-sim": False}
@@ -248,7 +256,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {
       "sim": True,
       "no-sim": False}
@@ -276,7 +285,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {
       "sim": True,
       "no-sim": False}
@@ -303,7 +313,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {
       "sim": True,
       "no-sim": False}
@@ -330,7 +341,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {
       "sim": True,
       "no-sim": False}
@@ -357,7 +369,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -377,7 +390,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -398,7 +412,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -419,7 +434,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -440,7 +456,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -461,7 +478,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -482,7 +500,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -503,7 +522,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -524,7 +544,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -545,7 +566,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -566,7 +588,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -587,7 +610,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -608,7 +632,8 @@ def ftu(locale, device_flags, hashes):
       "script" : app,
       "gaia" : gaia_hash,
       "hg" : hg_hash,
-      "changed" : False}
+      "changed" : False,
+      "path" : screenshot_path}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
