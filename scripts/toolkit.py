@@ -139,7 +139,7 @@ def screenshot_changed(screenshot_name):
   new = Image.open(screenshot_name)
   old = Image.open(screenshot_name + '.old.jpeg')
   diff = ImageChops.difference(new, old)
-  if diff.getbbox:
+  if diff.getbbox():
     diff.save(screenshot_name + '.diff.jpeg', 'JPEG')
     print "-----Screenshot " + screenshot_name + ' changed-----'
     return True
