@@ -2,6 +2,7 @@ env/
 gaia/
 locales/
 screenshots/
+html_results/
 
 *.pyc
 *.swp
