@@ -24,6 +24,16 @@ def check_duplicate (db, data_id, data_l10n, app, app_categ, screenshot_entry):
         for screenshot in entry['screenshots']:
           if screenshot['id'] == screenshot_entry['id']:
             found = True
+            old_gaia_hash = screenshot['gaia']
+            new_gaia_hash = screenshot_entry['gaia']
+            old_hg_hash = screenshot['hg']
+            new_hg_hash = screenshot_entry['hg']
+            screenshot['old_gaia'] = old_gaia_hash
+            screenshot['old_hg'] = old_hg_hash
+            if old_gaia_hash != new_gaia_hash:
+              screenshot['gaia'] = new_gaia_hash
+            if old_hg_hash != new_hg_hash:
+              screenshot['hg'] = new_hg_hash
             break
         if not found:
           entry['screenshots'] = [screenshot_entry] + entry['screenshots']
@@ -38,6 +48,16 @@ def check_duplicate (db, data_id, data_l10n, app, app_categ, screenshot_entry):
           for screenshot in entry['screenshots']:
             if screenshot['id'] == screenshot_entry['id']:
               found = True
+              old_gaia_hash = screenshot['gaia']
+              new_gaia_hash = screenshot_entry['gaia']
+              old_hg_hash = screenshot['hg']
+              new_hg_hash = screenshot_entry['hg']
+              screenshot['old_gaia'] = old_gaia_hash
+              screenshot['old_hg'] = old_hg_hash
+              if old_gaia_hash != new_gaia_hash:
+                screenshot['gaia'] = new_gaia_hash
+              if old_hg_hash != new_hg_hash:
+                screenshot['hg'] = new_hg_hash
               break
           if not found:
             entry['screenshots'] = [screenshot_entry] + entry['screenshots']
@@ -53,8 +73,18 @@ def add_screenshot_to_id(db, data_id, data_l10n, app, app_categ, screenshot_entr
   found = False
   if len(db[data_id]) == 1:
     for screenshot in db[data_id][0]['screenshots']:
-      if screenshot['id'] ==  screenshot_entry['id']:
+      if screenshot['id'] == screenshot_entry['id']:
         found=True
+        old_gaia_hash = screenshot['gaia']
+        new_gaia_hash = screenshot_entry['gaia']
+        old_hg_hash = screenshot['hg']
+        new_hg_hash = screenshot_entry['hg']
+        screenshot['old_gaia'] = old_gaia_hash
+        screenshot['old_hg'] = old_hg_hash
+        if old_gaia_hash != new_gaia_hash:
+          screenshot['gaia'] = new_gaia_hash
+        if old_hg_hash != new_hg_hash:
+          screenshot['hg'] = new_hg_hash
         break
     if not found:
       db[data_id][0]['screenshots'] = [screenshot_entry] + db[data_id][0]['screenshots']

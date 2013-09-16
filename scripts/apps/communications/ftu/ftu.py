@@ -9,13 +9,15 @@ from scripts.toolkit import check_flags, change_screen_timeout
 from scripts.config import *
 
 
-def ftu(locale, device_flags):
+def ftu(locale, device_flags, hashes):
 
   db = get_db(locale)
 
   app = 'ftu'
   app_categ = 'communications'
   app_type = 'apps'
+  gaia_hash = hashes[0]
+  hg_hash = hashes[1]
   screenshot_path = app_type + '/' + app_categ + '/' + app
 
   create_screenshot_dir(locale, screenshot_path)
@@ -35,7 +37,9 @@ def ftu(locale, device_flags):
     file_name = 'languages'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -51,7 +55,9 @@ def ftu(locale, device_flags):
     file_name = 'data_3g-unlock_sim_screen'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {
       "sim": True,
       "no-sim": False}
@@ -70,7 +76,9 @@ def ftu(locale, device_flags):
     file_name = 'data_3g-unlock_sim_screen-invalid_pin'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {
       "sim": True,
       "no-sim": False}
@@ -92,7 +100,9 @@ def ftu(locale, device_flags):
     file_name = 'data_3g-unlock_sim_screen-wrong_pin-1st_time'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {
       "sim": True,
       "no-sim": False}
@@ -114,7 +124,9 @@ def ftu(locale, device_flags):
     file_name = 'data_3g-unlock_sim_screen-wrong_pin-2nd_time'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {
       "sim": True,
       "no-sim": False}
@@ -140,7 +152,9 @@ def ftu(locale, device_flags):
     file_name = 'data_3g-unlock_sim_screen'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {
       "sim": True,
       "no-sim": False}
@@ -159,7 +173,9 @@ def ftu(locale, device_flags):
     file_name = 'data_3g-unlock_sim_screen-invalid_puk'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {
       "sim": True,
       "no-sim": False}
@@ -181,7 +197,9 @@ def ftu(locale, device_flags):
     file_name = 'data_3g-unlock_sim_screen-invalid_new_pin'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {
       "sim": True,
       "no-sim": False}
@@ -203,7 +221,9 @@ def ftu(locale, device_flags):
     file_name = 'data_3g-unlock_sim_screen-invalid_new_pin_confirmation'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {
       "sim": True,
       "no-sim": False}
@@ -226,7 +246,9 @@ def ftu(locale, device_flags):
     file_name = 'data_3g-unlock_sim_screen-wrong_puk-1st_time'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {
       "sim": True,
       "no-sim": False}
@@ -248,7 +270,9 @@ def ftu(locale, device_flags):
     file_name = 'data_3g-unlock_sim_screen-wrong_puk-2nd_time'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {
       "sim": True,
       "no-sim": False}
@@ -270,7 +294,9 @@ def ftu(locale, device_flags):
     file_name = 'data_3g'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {
       "sim": True,
       "no-sim": False}
@@ -292,7 +318,9 @@ def ftu(locale, device_flags):
     file_name = 'wifi-loading_overlay-scanning_networks'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -307,7 +335,9 @@ def ftu(locale, device_flags):
     file_name = 'wifi'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -323,7 +353,9 @@ def ftu(locale, device_flags):
     file_name = 'date_and_time'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -339,7 +371,9 @@ def ftu(locale, device_flags):
     file_name = 'geolocation'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -355,7 +389,9 @@ def ftu(locale, device_flags):
     file_name = 'import_contacts'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -371,7 +407,9 @@ def ftu(locale, device_flags):
     file_name = 'welcome_browser'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -387,7 +425,9 @@ def ftu(locale, device_flags):
     file_name = 'browser_privacy'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -403,7 +443,9 @@ def ftu(locale, device_flags):
     file_name = 'step1-first_tutorial_screen'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -419,7 +461,9 @@ def ftu(locale, device_flags):
     file_name = 'step1'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -435,7 +479,9 @@ def ftu(locale, device_flags):
     file_name = 'step2'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -451,7 +497,9 @@ def ftu(locale, device_flags):
     file_name = 'step3'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -467,7 +515,9 @@ def ftu(locale, device_flags):
     file_name = 'step4'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
@@ -483,7 +533,9 @@ def ftu(locale, device_flags):
     file_name = 'step4-last_tutorial_screen'
     screenshot_entry = {
       "id" : file_name,
-      "script" : app}
+      "script" : app,
+      "gaia" : gaia_hash,
+      "hg" : hg_hash}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)

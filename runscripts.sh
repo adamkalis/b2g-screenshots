@@ -56,6 +56,8 @@ then
   ARGS="$ARGS -f $FLAGS_LIST"
 fi
 
+GAIA_HASH=$(git --git-dir=gaia/.git log --pretty=format:"%h" -1)
+
 if [ ! -z "$LOCALES" ]
 then
   for locale in $LOCALES
@@ -74,18 +76,22 @@ then
     adb wait-for-device
     adb forward tcp:2828 tcp:2828
     echo connected to adb - wait for device to fully load GAIA
+    HG_HASH=$(hg -R locales/$locale id -i)
+    HASHES="$GAIA_HASH,$HG_HASH"
     sleep 40s
-    env/bin/python runscripts.py -l $locale $ARGS
+    env/bin/python runscripts.py -l $locale $ARGS -h $HASHES
   done
 else
   for locale in $(ls locales)
   do
     adb wait-for-device
     (cd gaia ; make clean && make production GAIA_DEFAULT_LOCALE=$locale LOCALES_FILE=locales/languages_all.json LOCALE_BASEDIR=../locales/ REMOTE_DEBUGGER=1)
+    HG_HASH=$(hg -R locales/$locale id -i)
+    HASHES="$GAIA_HASH,$HG_HASH"
     adb wait-for-device
     adb forward tcp:2828 tcp:2828
     echo connected to adb - wait for device to fully load GAIA
     sleep 40s
-    env/bin/python runscripts.py -l $locale $ARGS
+    env/bin/python runscripts.py -l $locale $ARGS -h $HASHES
   done
 fi

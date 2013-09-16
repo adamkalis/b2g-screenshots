@@ -6,6 +6,7 @@ locale = ''
 apps_list = ['ftu']
 properties_files = []
 data_ids = []
+hashes = ['','']
 device_flags = {
   "sim": None,
   "no-sim": None,
@@ -18,12 +19,12 @@ device_flags = {
 }
 
 try:
-  myopts, args = getopt.getopt(sys.argv[1:],"l:a:p:i:f:")
+  myopts, args = getopt.getopt(sys.argv[1:],"l:a:p:i:f:h:")
 except getopt.GetoptError as e:
   print (str(e))
-  print("Usage: %s -l locale [-a apps_list_sbc] [-p properties_files_sbc] [-i data_ids_sbc] [-f flags_sbc]" % sys.argv[0])
+  print("Usage: %s -l locale [-a apps_list_sbc] [-p properties_files_sbc] [-i data_ids_sbc] [-f flags_sbc] [-h gaia_hash,hg_hash]" % sys.argv[0])
   print("\"sbc\" means \"seperated by comma\"")
-  print("example: %s -l el -a ftu,browser -f no-sim,wifi" % sys.argv[0])
+  print("example: %s -l el -a ftu,browser -f no-sim,wifi -h fekdi42mfa,61de4ew7ec15" % sys.argv[0])
   sys.exit(2)
 
 for o, a in myopts:
@@ -35,6 +36,8 @@ for o, a in myopts:
     properties_files = a
   elif o == '-i':
     data_ids = a.split(',')
+  elif o == '-h':
+    hashes = a.split(',')
   elif o == '-f':
     for flag in a.split(','):
       if flag == 'sim' and not device_flags['no-sim']:
@@ -81,6 +84,5 @@ apps_dict = {
   'ftu': apps.communications.ftu.ftu
 }
 
-
 if 'ftu' in apps_list:
-  apps_dict['ftu'](locale, device_flags)
+  apps_dict['ftu'](locale, device_flags, hashes)
