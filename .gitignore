@@ -4,3 +4,4 @@ locales/
 screenshots/
 
 *.pyc
+*.swp
