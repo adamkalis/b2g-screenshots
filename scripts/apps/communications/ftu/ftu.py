@@ -39,12 +39,15 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry, '#activation-screen')
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # switch to app://communications.gaiamobile.org/ftu/index.html#data_3g (unlock-sim-screen screen)
       next = client.find_element('css selector', '#forward')
@@ -57,14 +60,17 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {
       "sim": True,
       "no-sim": False}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry, '#unlock-sim-screen')
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # invalid pin -> error about pin characters
       # stay at app://communications.gaiamobile.org/ftu/index.html#data_3g (unlock-sim-screen screen)
@@ -78,14 +84,17 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {
       "sim": True,
       "no-sim": False}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry, '#unlock-sim-screen')
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # insert wrong pin (attempt 1 of 3)
       pin_input = client.find_element('css selector', '#pin-input')
@@ -102,14 +111,17 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {
       "sim": True,
       "no-sim": False}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry, '#unlock-sim-screen')
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # insert wrong pin (attempt 2 of 3)
       pin_input = client.find_element('css selector', '#pin-input')
@@ -126,14 +138,17 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {
       "sim": True,
       "no-sim": False}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry, '#unlock-sim-screen')
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # insert wrong pin (atempt 3 of 3) - continues to puk screen
       pin_input = client.find_element('css selector', '#pin-input')
@@ -154,14 +169,17 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {
       "sim": True,
       "no-sim": False}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry, '#unlock-sim-screen')
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # invalid puk -> error about puk characters
       # stay at app://communications.gaiamobile.org/ftu/index.html#data_3g (sim puk screen - unlock-sim-screen)
@@ -175,14 +193,17 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {
       "sim": True,
       "no-sim": False}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry, '#unlock-sim-screen')
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # insert wrong puk - invalid new pin -> error about pin characters
       puk_input = client.find_element('css selector', '#puk-input')
@@ -199,14 +220,17 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {
       "sim": True,
       "no-sim": False}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry, '#unlock-sim-screen')
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # insert new pin without confirmed it -> error about pin confirmation (wrong puk is preserved at its input)
       newpin_input = client.find_element('css selector', '#newpin-input')
@@ -223,14 +247,17 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {
       "sim": True,
       "no-sim": False}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry, '#unlock-sim-screen')
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # insert confirmation of the new pin (wrong puk and new pin are preserved at their inputs)
       newpin_input = client.find_element('css selector', '#confirm-newpin-input')
@@ -248,14 +275,17 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {
       "sim": True,
       "no-sim": False}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry, '#unlock-sim-screen')
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # insert wrong puk (attempt 2 of 9) (new pin and its confirmation are preserved at their inputs)
       puk_input = client.find_element('css selector', '#puk-input')
@@ -272,14 +302,17 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {
       "sim": True,
       "no-sim": False}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry, '#unlock-sim-screen')
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # insert right puk (attempt 2 of 9) (new pin and its confirmation are preserved at their inputs)
       puk_input = client.find_element('css selector', '#puk-input')
@@ -296,14 +329,17 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {
       "sim": True,
       "no-sim": False}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry, '#activation-screen')
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # switch to app://communications.gaiamobile.org/ftu/index.html#wifi
       next = client.find_element('css selector', '#forward')
@@ -320,12 +356,15 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry, '#loading-overlay')
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # disable overlay "scanningNetworks" spinner screen
       client.execute_script("window.wrappedJSObject.utils.overlay.hide('scanningNetworks', 'spinner');")
@@ -337,12 +376,15 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry, '#wifi')
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # switch to app://communications.gaiamobile.org/ftu/index.html#date_and_time
       next = client.find_element('css selector', '#forward')
@@ -355,12 +397,15 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry, '#date_and_time')
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # switch to app://communications.gaiamobile.org/ftu/index.html#geolocation
       next = client.find_element('css selector', '#forward')
@@ -373,12 +418,15 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry, '#geolocation')
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # switch to app://communications.gaiamobile.org/ftu/index.html#import_contacts
       next = client.find_element('css selector', '#forward')
@@ -391,12 +439,15 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry, '#import_contacts')
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # switch to app://communications.gaiamobile.org/ftu/index.html#welcome_browser
       next = client.find_element('css selector', '#forward')
@@ -409,12 +460,15 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry)
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # switch to app://communications.gaiamobile.org/ftu/index.html#browser_privacy
       next = client.find_element('css selector', '#forward')
@@ -427,12 +481,15 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry)
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # switch to app://communications.gaiamobile.org/ftu/index.html#step1 (first tutorial screen)
       next = client.find_element('css selector', '#forward')
@@ -445,12 +502,15 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry)
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # switch to app://communications.gaiamobile.org/ftu/index.html#step1
       next = client.find_element('css selector', '#lets-go-button')
@@ -463,12 +523,15 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry)
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # switch to app://communications.gaiamobile.org/ftu/index.html#step2
       next = client.find_element('css selector', '#forwardTutorial')
@@ -481,12 +544,15 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry)
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # switch to app://communications.gaiamobile.org/ftu/index.html#step3
       next = client.find_element('css selector', '#forwardTutorial')
@@ -499,12 +565,15 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry)
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # switch to app://communications.gaiamobile.org/ftu/index.html#step4
       next = client.find_element('css selector', '#forwardTutorial')
@@ -517,12 +586,15 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry)
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # switch to app://communications.gaiamobile.org/ftu/index.html#step4 (last tutorial screen)
       next = client.find_element('css selector', '#forwardTutorial')
@@ -535,12 +607,15 @@ def ftu(locale, device_flags, hashes):
       "id" : file_name,
       "script" : app,
       "gaia" : gaia_hash,
-      "hg" : hg_hash}
+      "hg" : hg_hash,
+      "changed" : False}
     test_flags = {}
     if check_flags(test_flags, device_flags):
       screenshot_entry.update(test_flags)
+      if take_screenshot(locale, screenshot_path, client, file_name):
+        screenshot_entry['changed'] = True
       log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry)
-      take_screenshot(locale, screenshot_path, client, file_name)
+
 
       # Close ftu frame
       next = client.find_element('css selector', '#tutorialFinished')

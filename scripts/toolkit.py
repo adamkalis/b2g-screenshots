@@ -24,6 +24,7 @@ def check_duplicate (db, data_id, data_l10n, app, app_categ, screenshot_entry):
         for screenshot in entry['screenshots']:
           if screenshot['id'] == screenshot_entry['id']:
             found = True
+            screenshot['changed'] = screenshot_entry['changed']
             old_gaia_hash = screenshot['gaia']
             new_gaia_hash = screenshot_entry['gaia']
             old_hg_hash = screenshot['hg']
@@ -48,6 +49,7 @@ def check_duplicate (db, data_id, data_l10n, app, app_categ, screenshot_entry):
           for screenshot in entry['screenshots']:
             if screenshot['id'] == screenshot_entry['id']:
               found = True
+              screenshot['changed'] = screenshot_entry['changed']
               old_gaia_hash = screenshot['gaia']
               new_gaia_hash = screenshot_entry['gaia']
               old_hg_hash = screenshot['hg']
@@ -75,6 +77,7 @@ def add_screenshot_to_id(db, data_id, data_l10n, app, app_categ, screenshot_entr
     for screenshot in db[data_id][0]['screenshots']:
       if screenshot['id'] == screenshot_entry['id']:
         found=True
+        screenshot['changed'] = screenshot_entry['changed']
         old_gaia_hash = screenshot['gaia']
         new_gaia_hash = screenshot_entry['gaia']
         old_hg_hash = screenshot['hg']
@@ -122,8 +125,8 @@ def take_screenshot(locale, path, client, file_name):
   file.write(base64.decodestring(screenshot))
   file.close()
   if os.path.exists(screenshot_name + '.old.jpeg'):
-    if screenshot_changed(screenshot_name):
-      print "-----Screenshot " + screenshot_name + ' changed-----'
+    return screenshot_changed(screenshot_name)
+  return False
 
 def check_flags(test_flags, device_flags):
   for flag in test_flags:
@@ -138,6 +141,7 @@ def screenshot_changed(screenshot_name):
   diff = ImageChops.difference(new, old)
   if diff.getbbox:
     diff.save(screenshot_name + '.diff.jpeg', 'JPEG')
+    print "-----Screenshot " + screenshot_name + ' changed-----'
     return True
   else:
     return False
