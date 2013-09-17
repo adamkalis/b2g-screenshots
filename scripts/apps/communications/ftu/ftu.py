@@ -513,7 +513,7 @@ def ftu(locale, device_flags, hashes):
       # switch to app://communications.gaiamobile.org/ftu/index.html#step1 (first tutorial screen)
       next = client.find_element('css selector', '#forward')
       next.tap()
-      time.sleep(short_time)
+      time.sleep(long_time)
 
     # app://communications.gaiamobile.org/ftu/index.html#step1 (first tutorial screen)
     file_name = 'step1-first_tutorial_screen'
@@ -623,7 +623,7 @@ def ftu(locale, device_flags, hashes):
       # switch to app://communications.gaiamobile.org/ftu/index.html#step4 (last tutorial screen)
       next = client.find_element('css selector', '#forwardTutorial')
       next.tap()
-      time.sleep(short_time)
+      time.sleep(long_time)
 
     # app://communications.gaiamobile.org/ftu/index.html#step4 (last tutorial screen)
     file_name = 'step4-last_tutorial_screen'
