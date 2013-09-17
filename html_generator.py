@@ -2,83 +2,135 @@ from scripts.toolkit import get_db
 import os
 
 #HTML
-file = open('html_results/index.html', 'w')
-file.write('<!doctype html>\n')
-file.write('<html>\n')
-file.write('  <head>\n')
-file.write('    <title>Locales vs Apps</title>\n')
-file.write('    <link rel="stylesheet" type="text/css" href="index.css" />\n')
-file.write('  </head>\n')
-file.write('  <body>\n')
-file.write('')
-file.write('    <table>\n')
-file.write('      <tbody>\n')
-file.write('        <tr>\n')
-file.write('          <th></th>\n')
-file.write('')
+htmlfile = open('html_results/index.html', 'w')
+htmlfile.write('<!doctype html>\n')
+htmlfile.write('<html>\n')
+htmlfile.write('  <head>\n')
+htmlfile.write('    <title>Locales vs Apps</title>\n')
+htmlfile.write('    <link rel="stylesheet" type="text/css" href="style.css" />\n')
+htmlfile.write('  </head>\n')
+htmlfile.write('  <body>\n')
+htmlfile.write('')
+htmlfile.write('    <table>\n')
+htmlfile.write('      <tbody>\n')
+htmlfile.write('        <tr>\n')
+htmlfile.write('          <th></th>\n')
+htmlfile.write('')
 
 apps = {}
 
 for locale in os.listdir('screenshots'):
-  file.write("          <th class='locales'>" + locale + "</th>\n")
+  htmlfile.write("          <th class='locales'>" + locale + "</th>\n")
   db = get_db(locale)
   for i in db:
     for j in db[i]:
       if j['screenshots']:
         for k in j['screenshots']:
           if apps.has_key(k['path']):
-            if [locale, True] in apps[k['path']] or [locale, False] in apps[k['path']]:
-              for app in apps[k['path']]:
-                if app[0] == locale and not app[1]:
-                  app[1] = k['changed']
+            if apps[k['path']].has_key(locale):
+              if not apps[k['path']][locale]['changed']:
+                apps[k['path']][locale]['changed'] = k['changed']
+              apps[k['path']][locale]['ids'].append((k['id'], k['changed']))
             else:
-              apps[k['path']].append([locale, k['changed']])
+              apps[k['path']].update({locale: {'changed': k['changed'], 'ids': [(k['id'], k['changed'])]}})
           else:
-            apps[k['path']] = [[locale, k['changed']]]
+            apps.update({k['path']: {locale: {'changed': k['changed'], 'ids': [(k['id'], k['changed'])]}}})
 
-file.write('        </tr>\n')
-file.write('        <tr>\n')
+htmlfile.write('        </tr>\n')
 
 for app in apps:
-  file.write("          <th class='apps'>" + app + "</th>\n")
+  htmlfile.write('        <tr>\n')
+  htmlfile.write("          <th class='apps'>" + app + "</th>\n")
   for locale in apps[app]:
-    if locale[1]:
-      file.write("          <td class='changed'>CHANGED</td>\n")
+    if apps[app][locale]['changed']:
+      htmlfile.write("          <td class='changed'><a href=" + app.replace("/","_") + "_" + locale + ".html>CHANGED</a></td>\n")
     else:
-      file.write("          <td class='ok'>OK</td>\n")
+      htmlfile.write("          <td class='ok'><a href=" + app.replace("/","_") + "_" + locale + ".html>OK</a></td>\n")
 
-file.write('        </tr>\n')
-file.write('      </tbody>\n')
-file.write('    </table>\n')
-file.write('  </body>\n')
-file.write('</html>')
-file.close()
+    htmlappfile = open("html_results/" + app.replace('/','_') + '_' + locale + '.html', 'w')
+    htmlappfile.write('<!doctype html>\n')
+    htmlappfile.write('<html>\n')
+    htmlappfile.write('  <head>\n')
+    htmlappfile.write('    <title>Screenshots for ' + app + ' in ' + locale + '</title>\n')
+    htmlappfile.write('    <link rel="stylesheet" type="text/css" href="style.css" />\n')
+    htmlappfile.write('  </head>\n')
+    htmlappfile.write('  <body>\n')
+    htmlappfile.write('')
+    htmlappfile.write('    <table>\n')
+    htmlappfile.write('      <tbody>\n')
+    htmlappfile.write('        <tr>\n')
+    htmlappfile.write('          <th>l10n ID</th>\n')
+    htmlappfile.write('          <th>New</th>\n')
+    htmlappfile.write('          <th>Old</th>\n')
+    htmlappfile.write('          <th>Diff</th>\n')
+    htmlappfile.write('        </tr>\n')
+    for screenshot in apps[app][locale]['ids']:
+      if screenshot[1]:
+        htmlappfile.write("        <tr class='changed'>\n")
+      else:
+        htmlappfile.write("        <tr class='ok'>\n")
+      htmlappfile.write("          <td class='id'>" + screenshot[0] + "</td>\n")
+      htmlappfile.write("          <td class='new'>\n")
+      htmlappfile.write("            <a href='../screenshots/" + locale + "/" + app + "/" + screenshot[0] + "'>\n")
+      htmlappfile.write("              <img src='../screenshots/" + locale + "/" + app + "/" + screenshot[0] + "'/>\n")
+      htmlappfile.write("            </a>\n")
+      htmlappfile.write("          </td>\n")
+      htmlappfile.write("          <td class='old'>\n")
+      htmlappfile.write("            <a href='../screenshots/" + locale + "/" + app + "/" + screenshot[0] + ".old.jpeg'>\n")
+      htmlappfile.write("              <img src='../screenshots/" + locale + "/" + app + "/" + screenshot[0] + ".old.jpeg'/>\n")
+      htmlappfile.write("            </a>\n")
+      htmlappfile.write("          </td>\n")
+      htmlappfile.write("          <td class='diff'>\n")
+      if screenshot[1]:
+        htmlappfile.write("            <a href='../screenshots/" + locale + "/" + app + "/" + screenshot[0] + ".diff.jpeg'>\n")
+        htmlappfile.write("              <img src='../screenshots/" + locale + "/" + app + "/" + screenshot[0] + ".diff.jpeg'/>\n")
+        htmlappfile.write("            </a>\n")
+      htmlappfile.write("          </td>\n")
+      htmlappfile.write("        </tr>\n")
+    htmlappfile.write('      </tbody>\n')
+    htmlappfile.write('    </table>\n')
+    htmlappfile.write('  </body>\n')
+    htmlappfile.write('</html>')
+    htmlappfile.close()
+  htmlfile.write('        </tr>\n')
+
+htmlfile.write('      </tbody>\n')
+htmlfile.write('    </table>\n')
+htmlfile.write('  </body>\n')
+htmlfile.write('</html>')
+htmlfile.close()
 
 #CSS
-file = open('html_results/index.css', 'w')
+cssfile = open('html_results/style.css', 'w')
 
-file.write('table th{\n')
-file.write('    background-color: #FFFF99;\n')
-file.write('    font-size: large;\n')
-file.write('    border: 1px solid black;\n')
-file.write('}\n')
-file.write('table td{\n')
-file.write('    border: 1px solid black;\n')
-file.write('}\n')
-file.write('table {\n')
-file.write('    width: 100%;\n')
-file.write('    text-align: center;\n')
-file.write('    border: 2px solid black;\n')
-file.write('    border-collapse: collapse;\n')
-file.write('}\n')
-file.write('table .changed {\n')
-file.write('    background-color: #FF0000;\n')
-file.write('    font-weight: bold;\n')
-file.write('    border: 2px solid black;\n')
-file.write('}\n')
-file.write('table .ok {\n')
-file.write('    background-color: #00FF00;\n')
-file.write('    font-weight: bold;\n')
-file.write('}\n')
+cssfile.write('table th{\n')
+cssfile.write('    background-color: #FFFF99;\n')
+cssfile.write('    font-size: large;\n')
+cssfile.write('    border: 1px solid black;\n')
+cssfile.write('}\n')
+cssfile.write('table td{\n')
+cssfile.write('    border: 1px solid black;\n')
+cssfile.write('}\n')
+cssfile.write('table {\n')
+cssfile.write('    width: 100%;\n')
+cssfile.write('    text-align: center;\n')
+cssfile.write('    border: 2px solid black;\n')
+cssfile.write('    border-collapse: collapse;\n')
+cssfile.write('}\n')
+cssfile.write('table .changed {\n')
+cssfile.write('    background-color: #FF0000;\n')
+cssfile.write('    font-weight: bold;\n')
+cssfile.write('    border: 2px solid black;\n')
+cssfile.write('}\n')
+cssfile.write('table .ok {\n')
+cssfile.write('    background-color: #00FF00;\n')
+cssfile.write('    font-weight: bold;\n')
+cssfile.write('}\n')
+cssfile.write('table .id {\n')
+cssfile.write('    font-weight: bold;\n')
+cssfile.write('}\n')
+cssfile.write('img{\n')
+cssfile.write('    width: 40%;\n')
+cssfile.write('}\n')
 
-file.close()
+cssfile.close()
