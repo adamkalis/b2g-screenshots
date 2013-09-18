@@ -19,7 +19,7 @@ htmlfile.write('')
 
 apps = {}
 
-for locale in os.listdir('screenshots'):
+for locale in os.listdir('results/screenshots'):
   htmlfile.write("          <th class='locales'>" + locale + "</th>\n")
   db = get_db(locale)
   for i in db:
