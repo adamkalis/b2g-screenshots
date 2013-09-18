@@ -41,7 +41,7 @@ htmlfile.write('        </tr>\n')
 for app in apps:
   htmlfile.write('        <tr>\n')
   htmlfile.write("          <th class='apps'>" + app + "</th>\n")
-  for locale in apps[app]:
+  for locale in os.listdir('results/screenshots'):
     if apps[app][locale]['changed']:
       htmlfile.write("          <td class='changed'><a href=" + app.replace("/","_") + "_" + locale + ".html>CHANGED</a></td>\n")
     else:
