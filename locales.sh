@@ -20,7 +20,7 @@ case "$1" in
       do
        (hg clone http://hg.mozilla.org/gaia-l10n/$locale locales/$locale/;
         python ids_json.py $locale;
-        mkdir -p screenshots/$locale) &
+        mkdir -p results/screenshots/$locale) &
       done
       wait
     else
@@ -39,7 +39,7 @@ case "$1" in
       do
        (hg clone http://hg.mozilla.org/gaia-l10n/$locale locales/$locale/;
         python ids_json.py $locale;
-        mkdir -p screenshots/$locale) &
+        mkdir -p results/screenshots/$locale) &
       done
       wait
     fi
@@ -61,7 +61,7 @@ case "$1" in
     for locale in $AVAIL_LOCALES
     do
      (rm -rf locales/$locale/;
-      rm -rf screenshots/$locale/) &
+      rm -rf results/screenshots/$locale/) &
     done
     wait
     ;;

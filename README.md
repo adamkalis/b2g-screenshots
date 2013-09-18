@@ -20,7 +20,7 @@ Similar to the risks that described at [mdn for gaia tests](https://developer.mo
 * Initialize the platform (you can choose your own [locale(s)](http://hg.mozilla.org/gaia-l10n)): <pre>make init -j4 LOCALES='en-US el'</pre>
 * Make sure your device is connected: <pre>adb devices</pre>
 * Run the scripts: <pre>make runscripts</pre>
-* Get your screenshots at screenshots/en-US and screenshots/el directories
+* Get your screenshots at results/screenshots/en-US and results/screenshots/el directories
 
 For more details about commands look at [the wiki](https://github.com/adamkalis/b2g-screenshots/wiki)
 

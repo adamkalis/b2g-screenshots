@@ -112,12 +112,12 @@ def log_displayed_l10n_strings(client, db, app, app_categ, screenshot_entry, sec
           print 'String with id "' + data_id + '" does not exist into db.json'
 
 def create_screenshot_dir(locale, path):
-  directory = 'screenshots/' + locale + '/' + path + '/'
+  directory = 'results/screenshots/' + locale + '/' + path + '/'
   if not os.path.exists(directory):
     os.makedirs(directory)
 
 def take_screenshot(locale, path, client, file_name):
-  screenshot_name = 'screenshots/' + locale + '/' + path + '/' + file_name
+  screenshot_name = 'results/screenshots/' + locale + '/' + path + '/' + file_name
   if os.path.exists(screenshot_name):
     os.rename(screenshot_name, screenshot_name + '.old.jpeg')
   file = open(screenshot_name, 'w')

@@ -2,7 +2,7 @@ from scripts.toolkit import get_db
 import os
 
 #HTML
-htmlfile = open('html_results/index.html', 'w')
+htmlfile = open('results/index.html', 'w')
 htmlfile.write('<!doctype html>\n')
 htmlfile.write('<html>\n')
 htmlfile.write('  <head>\n')
@@ -47,7 +47,7 @@ for app in apps:
     else:
       htmlfile.write("          <td class='ok'><a href=" + app.replace("/","_") + "_" + locale + ".html>OK</a></td>\n")
 
-    htmlappfile = open("html_results/" + app.replace('/','_') + '_' + locale + '.html', 'w')
+    htmlappfile = open("results/" + app.replace('/','_') + '_' + locale + '.html', 'w')
     htmlappfile.write('<!doctype html>\n')
     htmlappfile.write('<html>\n')
     htmlappfile.write('  <head>\n')
@@ -71,19 +71,19 @@ for app in apps:
         htmlappfile.write("        <tr class='ok'>\n")
       htmlappfile.write("          <td class='id'>" + screenshot[0] + "</td>\n")
       htmlappfile.write("          <td class='new'>\n")
-      htmlappfile.write("            <a href='../screenshots/" + locale + "/" + app + "/" + screenshot[0] + "'>\n")
-      htmlappfile.write("              <img src='../screenshots/" + locale + "/" + app + "/" + screenshot[0] + "'/>\n")
+      htmlappfile.write("            <a href='screenshots/" + locale + "/" + app + "/" + screenshot[0] + "'>\n")
+      htmlappfile.write("              <img src='screenshots/" + locale + "/" + app + "/" + screenshot[0] + "'/>\n")
       htmlappfile.write("            </a>\n")
       htmlappfile.write("          </td>\n")
       htmlappfile.write("          <td class='old'>\n")
-      htmlappfile.write("            <a href='../screenshots/" + locale + "/" + app + "/" + screenshot[0] + ".old.jpeg'>\n")
-      htmlappfile.write("              <img src='../screenshots/" + locale + "/" + app + "/" + screenshot[0] + ".old.jpeg'/>\n")
+      htmlappfile.write("            <a href='screenshots/" + locale + "/" + app + "/" + screenshot[0] + ".old.jpeg'>\n")
+      htmlappfile.write("              <img src='screenshots/" + locale + "/" + app + "/" + screenshot[0] + ".old.jpeg'/>\n")
       htmlappfile.write("            </a>\n")
       htmlappfile.write("          </td>\n")
       htmlappfile.write("          <td class='diff'>\n")
       if screenshot[1]:
-        htmlappfile.write("            <a href='../screenshots/" + locale + "/" + app + "/" + screenshot[0] + ".diff.jpeg'>\n")
-        htmlappfile.write("              <img src='../screenshots/" + locale + "/" + app + "/" + screenshot[0] + ".diff.jpeg'/>\n")
+        htmlappfile.write("            <a href='screenshots/" + locale + "/" + app + "/" + screenshot[0] + ".diff.jpeg'>\n")
+        htmlappfile.write("              <img src='screenshots/" + locale + "/" + app + "/" + screenshot[0] + ".diff.jpeg'/>\n")
         htmlappfile.write("            </a>\n")
       htmlappfile.write("          </td>\n")
       htmlappfile.write("        </tr>\n")
@@ -101,7 +101,7 @@ htmlfile.write('</html>')
 htmlfile.close()
 
 #CSS
-cssfile = open('html_results/style.css', 'w')
+cssfile = open('results/style.css', 'w')
 
 cssfile.write('table th{\n')
 cssfile.write('    background-color: #FFFF99;\n')
