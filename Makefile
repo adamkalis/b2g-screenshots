@@ -48,3 +48,8 @@ update-hg:
 .PHONY: runscripts
 runscripts:
 	./runscripts.sh
+
+.PHONY: html-results
+html-results:
+	mkdir -p html_results
+	env/bin/python html_generator.py
