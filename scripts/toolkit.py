@@ -117,10 +117,10 @@ def create_screenshot_dir(locale, path):
     os.makedirs(directory)
 
 def take_screenshot(locale, path, client, file_name):
-  screenshot_name = 'results/screenshots/' + locale + '/' + path + '/' + file_name + '.jpeg'
-  if os.path.exists(screenshot_name):
-    os.rename(screenshot_name, screenshot_name + '.old.jpeg')
-  file = open(screenshot_name, 'w')
+  screenshot_name = 'results/screenshots/' + locale + '/' + path + '/' + file_name
+  if os.path.exists(screenshot_name + '.jpeg'):
+    os.rename(screenshot_name + '.jpeg', screenshot_name + '.old.jpeg')
+  file = open(screenshot_name + '.jpeg', 'w')
   screenshot = client.screenshot()[22:]
   file.write(base64.decodestring(screenshot))
   file.close()
