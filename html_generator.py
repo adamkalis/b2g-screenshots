@@ -22,19 +22,22 @@ apps = {}
 for locale in os.listdir('results/screenshots'):
   htmlfile.write("          <th class='locales'>" + locale + "</th>\n")
   db = get_db(locale)
-  for i in db:
-    for j in db[i]:
-      if j['screenshots']:
-        for k in j['screenshots']:
-          if apps.has_key(k['path']):
-            if apps[k['path']].has_key(locale):
-              if not apps[k['path']][locale]['changed']:
-                apps[k['path']][locale]['changed'] = k['changed']
-              apps[k['path']][locale]['ids'].append((k['id'], k['changed']))
+  for entry in db:
+    for l10n_id in db[entry]:
+      if l10n_id['screenshots']:
+        for scr in l10n_id['screenshots']:
+          if apps.has_key(scr['path']):
+            if apps[scr['path']].has_key(locale):
+              if not apps[scr['path']][locale]['changed']:
+                apps[scr['path']][locale]['changed'] = scr['changed']
+              if apps[scr['path']][locale].has_key(scr['id']):
+                apps[scr['path']][locale][scr['id']]['l10n_ids'].append(l10n_id['id'])
+              else:
+                apps[scr['path']][locale].update({scr['id']: {'changed': scr['changed'], 'l10n_ids': [l10n_id['id']]}})
             else:
-              apps[k['path']].update({locale: {'changed': k['changed'], 'ids': [(k['id'], k['changed'])]}})
+              apps[scr['path']].update({locale: {'changed': scr['changed'], scr['id']: {'changed': scr['changed'], 'l10n_ids': [l10n_id['id']]}}})
           else:
-            apps.update({k['path']: {locale: {'changed': k['changed'], 'ids': [(k['id'], k['changed'])]}}})
+            apps.update({scr['path']: {locale: {'changed': scr['changed'], scr['id']: {'changed': scr['changed'], 'l10n_ids': [l10n_id['id']]}}}})
 
 htmlfile.write('        </tr>\n')
 
@@ -46,6 +49,8 @@ for app in apps:
       htmlfile.write("          <td class='changed'><a href=" + app.replace("/","_") + "_" + locale + ".html>CHANGED</a></td>\n")
     else:
       htmlfile.write("          <td class='ok'><a href=" + app.replace("/","_") + "_" + locale + ".html>OK</a></td>\n")
+    # delete 'changed' entry and let only screenshots entries
+    del apps[app][locale]['changed']
 
     htmlappfile = open("results/" + app.replace('/','_') + '_' + locale + '.html', 'w')
     htmlappfile.write('<!doctype html>\n')
@@ -64,26 +69,26 @@ for app in apps:
     htmlappfile.write('          <th>Old</th>\n')
     htmlappfile.write('          <th>Diff</th>\n')
     htmlappfile.write('        </tr>\n')
-    for screenshot in apps[app][locale]['ids']:
-      if screenshot[1]:
+    for scr_id in apps[app][locale]:
+      if apps[app][locale][scr_id]['changed']:
         htmlappfile.write("        <tr class='changed'>\n")
       else:
         htmlappfile.write("        <tr class='ok'>\n")
-      htmlappfile.write("          <td class='id'>" + screenshot[0] + "</td>\n")
+      htmlappfile.write("          <td class='id'>" + scr_id + "</td>\n")
       htmlappfile.write("          <td class='new'>\n")
-      htmlappfile.write("            <a href='screenshots/" + locale + "/" + app + "/" + screenshot[0] + ".jpeg'>\n")
-      htmlappfile.write("              <img src='screenshots/" + locale + "/" + app + "/" + screenshot[0] + ".jpeg'/>\n")
+      htmlappfile.write("            <a href='screenshots/" + locale + "/" + app + "/" + scr_id + ".jpeg'>\n")
+      htmlappfile.write("              <img src='screenshots/" + locale + "/" + app + "/" + scr_id + ".jpeg'/>\n")
       htmlappfile.write("            </a>\n")
       htmlappfile.write("          </td>\n")
       htmlappfile.write("          <td class='old'>\n")
-      htmlappfile.write("            <a href='screenshots/" + locale + "/" + app + "/" + screenshot[0] + ".old.jpeg'>\n")
-      htmlappfile.write("              <img src='screenshots/" + locale + "/" + app + "/" + screenshot[0] + ".old.jpeg'/>\n")
+      htmlappfile.write("            <a href='screenshots/" + locale + "/" + app + "/" + scr_id + ".old.jpeg'>\n")
+      htmlappfile.write("              <img src='screenshots/" + locale + "/" + app + "/" + scr_id + ".old.jpeg'/>\n")
       htmlappfile.write("            </a>\n")
       htmlappfile.write("          </td>\n")
       htmlappfile.write("          <td class='diff'>\n")
-      if screenshot[1]:
-        htmlappfile.write("            <a href='screenshots/" + locale + "/" + app + "/" + screenshot[0] + ".diff.jpeg'>\n")
-        htmlappfile.write("              <img src='screenshots/" + locale + "/" + app + "/" + screenshot[0] + ".diff.jpeg'/>\n")
+      if apps[app][locale][scr_id]['changed']:
+        htmlappfile.write("            <a href='screenshots/" + locale + "/" + app + "/" + scr_id + ".diff.jpeg'>\n")
+        htmlappfile.write("              <img src='screenshots/" + locale + "/" + app + "/" + scr_id + ".diff.jpeg'/>\n")
         htmlappfile.write("            </a>\n")
       htmlappfile.write("          </td>\n")
       htmlappfile.write("        </tr>\n")
