@@ -360,7 +360,7 @@ def ftu(locale, device_flags, hashes):
 
       # enable overlay "scanningNetworks" spinner screen (loading-overlay)
       client.execute_script("window.wrappedJSObject.utils.overlay.show('scanningNetworks', 'spinner');")
-      time.sleep(short_time)
+      time.sleep(middle_time)
     
     # overlay "scanningNetworks" spinner screen
     file_name = 'wifi-loading_overlay-scanning_networks'
