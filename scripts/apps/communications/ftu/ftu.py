@@ -56,7 +56,7 @@ def ftu(locale, device_flags, hashes):
       time.sleep(short_time)
 
     # app://communications.gaiamobile.org/ftu/index.html#data_3g (sim pin screen - unlock-sim-screen - 1st attempt)
-    file_name = 'data_3g-unlock_sim_screen'
+    file_name = 'data_3g-unlock_sim_screen-pin_screen'
     screenshot_entry = {
       "id" : file_name,
       "script" : app,
@@ -81,7 +81,7 @@ def ftu(locale, device_flags, hashes):
       time.sleep(short_time)
 
     # app://communications.gaiamobile.org/ftu/index.html#data_3g (sim pin screen - unlock-sim-screen - pin error)
-    file_name = 'data_3g-unlock_sim_screen-invalid_pin'
+    file_name = 'data_3g-unlock_sim_screen-pin_screen-invalid_pin'
     screenshot_entry = {
       "id" : file_name,
       "script" : app,
@@ -109,7 +109,7 @@ def ftu(locale, device_flags, hashes):
       time.sleep(short_time)
     
     # app://communications.gaiamobile.org/ftu/index.html#data_3g (sim pin screen - unlock-sim-screen - 2nd attempt)
-    file_name = 'data_3g-unlock_sim_screen-wrong_pin-1st_time'
+    file_name = 'data_3g-unlock_sim_screen-pin_screen-wrong_pin-1st_time'
     screenshot_entry = {
       "id" : file_name,
       "script" : app,
@@ -137,7 +137,7 @@ def ftu(locale, device_flags, hashes):
       time.sleep(short_time)
 
     # app://communications.gaiamobile.org/ftu/index.html#data_3g (sim pin screen - unlock-sim-screen - 3rd attempt)
-    file_name = 'data_3g-unlock_sim_screen-wrong_pin-2nd_time'
+    file_name = 'data_3g-unlock_sim_screen-pin_screen-wrong_pin-2nd_time'
     screenshot_entry = {
       "id" : file_name,
       "script" : app,
@@ -169,7 +169,7 @@ def ftu(locale, device_flags, hashes):
       header.tap()
 
     # app://communications.gaiamobile.org/ftu/index.html#data_3g (sim puk screen - unlock-sim-screen - 1st attempt)
-    file_name = 'data_3g-unlock_sim_screen'
+    file_name = 'data_3g-unlock_sim_screen-puk_screen'
     screenshot_entry = {
       "id" : file_name,
       "script" : app,
@@ -194,7 +194,7 @@ def ftu(locale, device_flags, hashes):
       time.sleep(short_time)
 
     # app://communications.gaiamobile.org/ftu/index.html#data_3g (sim puk screen - unlock-sim-screen - puk error)
-    file_name = 'data_3g-unlock_sim_screen-invalid_puk'
+    file_name = 'data_3g-unlock_sim_screen-puk_screen-invalid_puk'
     screenshot_entry = {
       "id" : file_name,
       "script" : app,
@@ -222,7 +222,7 @@ def ftu(locale, device_flags, hashes):
       time.sleep(short_time)
 
     # app://communications.gaiamobile.org/ftu/index.html#data_3g (sim puk screen - unlock-sim-screen - pin error)
-    file_name = 'data_3g-unlock_sim_screen-invalid_new_pin'
+    file_name = 'data_3g-unlock_sim_screen-puk_screen-invalid_new_pin'
     screenshot_entry = {
       "id" : file_name,
       "script" : app,
@@ -250,7 +250,7 @@ def ftu(locale, device_flags, hashes):
       time.sleep(short_time)
 
     # app://communications.gaiamobile.org/ftu/index.html#data_3g (sim puk screen - unlock-sim-screen - pin error)
-    file_name = 'data_3g-unlock_sim_screen-invalid_new_pin_confirmation'
+    file_name = 'data_3g-unlock_sim_screen-puk_screen-invalid_new_pin_confirmation'
     screenshot_entry = {
       "id" : file_name,
       "script" : app,
@@ -279,7 +279,7 @@ def ftu(locale, device_flags, hashes):
       time.sleep(short_time)
 
     # app://communications.gaiamobile.org/ftu/index.html#data_3g (sim puk screen - unlock-sim-screen - puk error)
-    file_name = 'data_3g-unlock_sim_screen-wrong_puk-1st_time'
+    file_name = 'data_3g-unlock_sim_screen-puk_screen-wrong_puk-1st_time'
     screenshot_entry = {
       "id" : file_name,
       "script" : app,
@@ -307,7 +307,7 @@ def ftu(locale, device_flags, hashes):
       time.sleep(short_time)
 
     # app://communications.gaiamobile.org/ftu/index.html#data_3g (sim puk screen - unlock-sim-screen - 2nd attempt)
-    file_name = 'data_3g-unlock_sim_screen-wrong_puk-2nd_time'
+    file_name = 'data_3g-unlock_sim_screen-puk_screen-wrong_puk-2nd_time'
     screenshot_entry = {
       "id" : file_name,
       "script" : app,
