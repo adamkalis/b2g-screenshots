@@ -7,7 +7,7 @@
 
 short_time = 0.3
 middle_time = 0.5
-long_time = 4
+long_time = 2
 
 #SIM details
 sim_pin = '1289'
