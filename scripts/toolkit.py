@@ -144,7 +144,8 @@ def screenshot_changed(screenshot_name):
     print "-----Screenshot " + screenshot_name + ' changed-----'
     return True
   else:
-    os.remove(screenshot_name + '.diff.jpeg')
+    if os.path.exists(screenshot_name + '.diff.jpeg'):
+      os.remove(screenshot_name + '.diff.jpeg')
     return False
 
 def change_screen_timeout(client):
