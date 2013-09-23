@@ -2,6 +2,7 @@ import sys
 import os
 import json
 import base64
+from marionette import Marionette
 from PIL import Image
 from PIL import ImageChops
 
