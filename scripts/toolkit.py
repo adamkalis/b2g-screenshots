@@ -154,3 +154,9 @@ def change_screen_timeout(client):
       let obj = {'screen.timeout': 0};
       setlock.set(obj);
     """)  
+
+def set_time(client):
+    client.set_context(Marionette.CONTEXT_CHROME)
+    # Set date at 1 Jan 2013 15:10:00 GMT
+    c.execute_script("window.navigator.mozTime.set(1357053000000)")
+    client.set_context(Marionette.CONTEXT_CONTENT)
