@@ -5,7 +5,7 @@ import base64
 import time
 from scripts.toolkit import create_screenshot_dir, take_screenshot
 from scripts.toolkit import get_db, set_db, log_displayed_l10n_strings
-from scripts.toolkit import check_flags, change_screen_timeout
+from scripts.toolkit import check_flags, change_screen_timeout, set_time
 from scripts.config import *
 
 
@@ -404,6 +404,9 @@ def ftu(locale, device_flags, hashes):
       next = client.find_element('css selector', '#forward')
       next.tap()
       time.sleep(short_time)
+
+    # Set time in order to be the same at every screenshot
+    set_time(client)
 
     # app://communications.gaiamobile.org/ftu/index.html#date_and_time
     file_name = 'date_and_time'
