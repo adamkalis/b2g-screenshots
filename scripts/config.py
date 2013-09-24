@@ -6,7 +6,7 @@
 #long_time = 2
 
 short_time = 0.3
-middle_time = 0.5
+middle_time = 2.5
 long_time = 4
 
 #SIM details

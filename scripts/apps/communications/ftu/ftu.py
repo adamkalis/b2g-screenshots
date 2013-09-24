@@ -450,7 +450,7 @@ def ftu(locale, device_flags, hashes):
       # switch to app://communications.gaiamobile.org/ftu/index.html#import_contacts
       next = client.find_element('css selector', '#forward')
       next.tap()
-      time.sleep(short_time)
+      time.sleep(middle_time)
 
     # app://communications.gaiamobile.org/ftu/index.html#import_contacts
     file_name = 'import_contacts'
